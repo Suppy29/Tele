@@ -1,0 +1,37 @@
+{
+  "name": "voice-roaster-bot",
+  "version": "1.0.0",
+  "description": "A Telegram bot that generates funny voice note roasts using ElevenLabs TTS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node test_smoke.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "tts",
+    "elevenlabs",
+    "roast",
+    "voice"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.6.1",
+    "elevenlabs": "^0.8.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2",
+    "node-telegram-bot-api": "^0.66.0",
+    "telegraf": "^4.15.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  voice-roaster-bot:
+    build: .
+    container_name: voice-roaster-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persist database
+      - ./db.json:/usr/src/app/db.json
+      # Persist roast files (in case you customize them)
+      - ./roasts_tame.txt:/usr/src/app/roasts_tame.txt
+      - ./roasts_spicy.txt:/usr/src/app/roasts_spicy.txt
+      - ./roasts_nuclear_placeholders.txt:/usr/src/app/roasts_nuclear_placeholders.txt
+    # Uncomment if using webhooks instead of polling
+    # ports:
+    #   - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Add a reverse proxy for webhooks
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: roaster-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #     - ./ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - voice-roaster-bot
+
+# Optional: Add external network for multiple services
+# networks:
+#   roaster_network:
+#     driver: bridge

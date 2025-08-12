@@ -1,0 +1,17 @@
+{
+  "users": {
+    "1729526923": {
+      "allowRoasts": false
+    },
+    "7407332241": {
+      "allowRoasts": true
+    }
+  },
+  "groups": {},
+  "cooldowns": {
+    "1729526923": {
+      "lastRoastTime": 1754975196641
+    }
+  },
+  "roastLog": []
+}
